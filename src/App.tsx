@@ -1,43 +1,45 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import Header from './components/Header';
-import Hero from './components/Hero';
-import Benefits from './components/Benefits';
-import Ingredients from './components/Ingredients';
-import HowToUse from './components/HowToUse';
-import FounderNote from './components/FounderNote';
-import Testimonials from './components/Testimonials';
-import Guarantee from './components/Guarantee';
-import FAQ from './components/FAQ';
-import FinalCTA from './components/FinalCTA';
 import Footer from './components/Footer';
 import VoiceglowChat from './components/VoiceglowChat';
+import HomePage from './pages/HomePage';
+import ShopPage from './pages/ShopPage';
+import ProductDetailPage from './pages/ProductDetailPage';
+import AboutPage from './pages/AboutPage';
+import IngredientsPage from './pages/IngredientsPage';
+import HowToUsePage from './pages/HowToUsePage';
+import ReviewsPage from './pages/ReviewsPage';
+import FAQPage from './pages/FAQPage';
+import ContactPage from './pages/ContactPage';
+import PoliciesPage from './pages/PoliciesPage';
 
 function App() {
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    // Ensure the app is fully loaded before showing content
-    const timer = setTimeout(() => {
-      setIsLoaded(true);
-    }, 100);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
-    <div className={`min-h-screen bg-porcelain transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
-      <Header />
-      <Hero />
-      <Benefits />
-      <Ingredients />
-      <HowToUse />
-      <FounderNote />
-      <Testimonials />
-      <Guarantee />
-      <FAQ />
-      <FinalCTA />
-      <Footer />
-      <VoiceglowChat />
-    </div>
+    <HelmetProvider>
+      <Router>
+        <div className="min-h-screen bg-cream">
+          <Header />
+          <main>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/shop" element={<ShopPage />} />
+              <Route path="/product/:slug" element={<ProductDetailPage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/ingredients" element={<IngredientsPage />} />
+              <Route path="/how-to-use" element={<HowToUsePage />} />
+              <Route path="/reviews" element={<ReviewsPage />} />
+              <Route path="/faq" element={<FAQPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/policies" element={<PoliciesPage />} />
+            </Routes>
+          </main>
+          <Footer />
+          <VoiceglowChat />
+        </div>
+      </Router>
+    </HelmetProvider>
   );
 }
 

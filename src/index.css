@@ -11,8 +11,8 @@
     margin: 0;
     padding: 0;
     font-family: 'Source Sans 3', sans-serif;
-    background-color: #FAF9F7;
-    color: #222;
+    background-color: #F6F3EE;
+    color: #0A0A0A;
     line-height: 1.6;
   }
   
@@ -24,13 +24,40 @@
 /* Prevent any flash of unstyled content */
 #root {
   min-height: 100vh;
-  background-color: #FAF9F7;
+  background-color: #F6F3EE;
 }
 
 /* Ensure smooth transitions */
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Image guardrails */
+.media {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.media-contain img {
+  object-fit: contain;
+}
+
+/* Button styles */
+.btn-primary {
+  @apply bg-black text-cream px-6 py-3 rounded-full md:rounded-lg font-source font-semibold transition-all duration-300 hover:shadow-lg;
+}
+
+.btn-secondary {
+  @apply border-2 border-black text-black px-6 py-3 rounded-full md:rounded-lg font-source font-semibold transition-all duration-300 hover:shadow-lg;
 }
 
 /* Ensure the Voiceglow chat launcher sits above other UI */
@@ -40,25 +67,21 @@
   right: 20px !important;
 }
 
-/* Override any default browser styles that might cause flickering */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
+/* Focus states for accessibility */
+button:focus,
+a:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid #C6A96A;
+  outline-offset: 2px;
 }
 
+/* Form styles */
+.form-input {
+  @apply w-full px-4 py-3 border border-black/20 rounded-lg font-source focus:border-gold focus:ring-1 focus:ring-gold;
+}
+
+.form-textarea {
+  @apply w-full px-4 py-3 border border-black/20 rounded-lg font-source focus:border-gold focus:ring-1 focus:ring-gold resize-vertical min-h-[120px];
+}

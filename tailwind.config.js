@@ -4,14 +4,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        porcelain: '#FAF9F7',
-        'deep-green': '#0F3D33',
-        sand: '#D9C9B4',
-        charcoal: '#222',
+        cream: '#F6F3EE',
+        black: '#0A0A0A',
+        gold: '#C6A96A',
       },
       fontFamily: {
         'playfair': ['Playfair Display', 'serif'],
         'source': ['Source Sans 3', 'sans-serif'],
+      },
+      aspectRatio: {
+        '4/5': '4 / 5',
       },
     },
   },
