@@ -83,5 +83,6 @@ select:focus {
 }
 
 .form-textarea {
-  @apply w-full px-4 py-3 border border-black/20 rounded-lg font-source focus:border-gold focus:ring-1 focus:ring-gold resize-vertical min-h-[120px];
+  @apply w-full px-4 py-3 border border-black/20 rounded-lg font-source focus:border-gold focus:ring-1 focus:ring-gold min-h-[120px];
+  resize: vertical;
 }
