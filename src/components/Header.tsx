@@ -5,6 +5,7 @@ import { Menu, X, ShoppingBag } from 'lucide-react';
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   const navigation = [
     { name: 'Shop', href: '/shop' },
@@ -12,7 +13,35 @@ const Header = () => {
     { name: 'Contact', href: '/contact' },
   ];
 
+  const homeNavigation = [
+    { name: 'Ingredients', href: '#ingredients' },
+    { name: 'How to Use', href: '#how-to-use' },
+    { name: 'My Story', href: '#my-story' },
+    { name: 'Shop', href: '/shop' },
+    { name: 'Contact', href: '/contact' },
+  ];
+
+  const currentNavigation = isHomePage ? homeNavigation : navigation;
+
   const isActive = (path: string) => location.pathname === path;
+
+  const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) {
+        const header = document.querySelector('header');
+        const headerOffset = header ? header.offsetHeight : 0;
+        const elementPosition = target.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = elementPosition - headerOffset - 20;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 bg-cream/95 backdrop-blur-sm border-b border-black/10 z-50">
@@ -34,18 +63,29 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                className={`font-source font-medium transition-colors ${
-                  isActive(item.href)
-                    ? 'text-gold'
-                    : 'text-black hover:text-gold'
-                }`}
-              >
-                {item.name}
-              </Link>
+            {currentNavigation.map((item) => (
+              item.href.startsWith('#') ? (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  onClick={(e) => handleAnchorClick(e, item.href)}
+                  className="font-source font-medium text-black hover:text-gold transition-colors"
+                >
+                  {item.name}
+                </a>
+              ) : (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className={`font-source font-medium transition-colors ${
+                    isActive(item.href)
+                      ? 'text-gold'
+                      : 'text-black hover:text-gold'
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              )
             ))}
           </nav>
 
@@ -70,19 +110,33 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden border-t border-black/10 py-4">
             <nav className="flex flex-col space-y-4">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  onClick={() => setIsMenuOpen(false)}
-                  className={`font-source font-medium transition-colors ${
-                    isActive(item.href)
-                      ? 'text-gold'
-                      : 'text-black hover:text-gold'
-                  }`}
-                >
-                  {item.name}
-                </Link>
+              {currentNavigation.map((item) => (
+                item.href.startsWith('#') ? (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    onClick={(e) => {
+                      handleAnchorClick(e, item.href);
+                      setIsMenuOpen(false);
+                    }}
+                    className="font-source font-medium text-black hover:text-gold transition-colors"
+                  >
+                    {item.name}
+                  </a>
+                ) : (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className={`font-source font-medium transition-colors ${
+                      isActive(item.href)
+                        ? 'text-gold'
+                        : 'text-black hover:text-gold'
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                )
               ))}
             </nav>
           </div>
