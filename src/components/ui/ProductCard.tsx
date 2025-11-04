@@ -20,7 +20,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 }) => {
   return (
     <div className="bg-white rounded-lg shadow-sm border border-black/10 overflow-hidden hover:shadow-md transition-shadow duration-300">
-      <Link to={`/product/${slug}`}>
+      <Link to={`/product/${slug}#top`}>
         <div className="media aspect-square">
           <img
             src={image}
@@ -32,15 +32,15 @@ const ProductCard: React.FC<ProductCardProps> = ({
           />
         </div>
       </Link>
-      
+
       <div className="p-4">
-        <Link to={`/product/${slug}`}>
+        <Link to={`/product/${slug}#top`}>
           <h3 className="font-playfair font-semibold text-black mb-1 hover:text-gold transition-colors">
             {name}
           </h3>
         </Link>
         <p className="font-source text-black/70 text-sm mb-2">{size}</p>
-        
+
         <div className="flex items-center justify-between">
           <span className="font-playfair font-bold text-lg text-black">{price}</span>
           {isPreOrder && (
@@ -49,9 +49,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
             </span>
           )}
         </div>
-        
+
         <Link
-          to={`/product/${slug}`}
+          to={`/product/${slug}#top`}
           className="btn-primary w-full text-center mt-3 block"
         >
           {isPreOrder ? 'Pre-order Now' : 'Add to Cart'}

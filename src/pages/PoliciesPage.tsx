@@ -229,8 +229,8 @@ const PoliciesPage = () => {
             <p className="font-source text-black/70 mb-6">
               If you have any questions about our policies, please don't hesitate to contact us.
             </p>
-            <a 
-              href="/contact"
+            <a
+              href="/contact#top"
               className="btn-primary inline-block"
             >
               Contact Us
