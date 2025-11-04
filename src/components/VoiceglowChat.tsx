@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { CHAT_ENABLED } from "../config/chat";
 
 declare global {
   interface Window {
@@ -9,12 +10,13 @@ declare global {
 
 export default function VoiceglowChat() {
   useEffect(() => {
+    if (!CHAT_ENABLED) return;
     if (window.VG_SCRIPT_LOADED) return;
 
     window.VG_CONFIG = {
-      ID: "AJQYyISJITg4YitQ",   // Your Agent ID
-      region: "na",            // Your account region
-      render: "bottom-right",  // popup launcher
+      ID: "AJQYyISJITg4YitQ",
+      region: "na",
+      render: "bottom-right",
       stylesheets: [
         "https://vg-bunny-cdn.b-cdn.net/vg_live_build/styles.css"
       ],
@@ -27,6 +29,7 @@ export default function VoiceglowChat() {
     document.body.appendChild(script);
   }, []);
 
-  // Required container for Voiceglow popup
+  if (!CHAT_ENABLED) return null;
+
   return <div id="VG_OVERLAY_CONTAINER" style={{ width: 0, height: 0 }} />;
 }
