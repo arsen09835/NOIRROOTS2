@@ -81,12 +81,12 @@ select:focus {
   resize: vertical;
 }
 
-/* Back-to-Home control (desktop) */
+/* Always-ON Back to Home control */
 .back-home {
   position: fixed;
   top: 16px;
   left: 16px;
-  z-index: 1000;
+  z-index: 1100;
   padding: 10px 14px;
   border-radius: 999px;
   border: 1px solid rgba(0,0,0,.12);
@@ -96,16 +96,11 @@ select:focus {
   font-size: 0.95rem;
   text-decoration: none;
   box-shadow: 0 2px 10px rgba(0,0,0,.06);
-  transition: transform .06s ease, filter .15s ease, background .2s ease;
 }
-.back-home:hover { filter: brightness(1.05); }
-.back-home:active { transform: translateY(1px) scale(.995); }
 .back-home:focus-visible {
   outline: 2px solid transparent;
   box-shadow: 0 0 0 3px rgba(20,115,230,.35);
 }
-
-/* Dark mode adjustments */
 @media (prefers-color-scheme: dark) {
   .back-home {
     background: rgba(20,20,20,.9);
@@ -113,8 +108,7 @@ select:focus {
     border-color: rgba(255,255,255,.14);
   }
 }
-
-/* Mobile bottom bar */
+/* Mobile thumb-friendly position */
 @media (max-width: 768px) {
   .back-home {
     top: auto;
@@ -127,5 +121,37 @@ select:focus {
     text-align: center;
     padding: 14px 18px;
     font-size: 1rem;
+  }
+}
+
+/* Reduce circular story image on desktop only */
+@media (min-width: 1024px) {
+  .story-hero-img,
+  .story-hero-img img,
+  .story-hero-img picture,
+  .story-hero-img canvas {
+    max-width: 50% !important;
+    height: auto !important;
+  }
+  .story-hero-wrapper {
+    align-items: center;
+    gap: 32px;
+  }
+}
+
+/* Make the first product image shorter on mobile so price/CTA are visible */
+@media (max-width: 768px) {
+  .product-hero-img img,
+  .product-hero-img picture,
+  .product-gallery img:first-child,
+  .product-gallery picture:first-child {
+    max-height: 42vh;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .product-info,
+  .buy-card {
+    margin-top: 8px;
   }
 }

@@ -20,6 +20,7 @@ function App() {
     <HelmetProvider>
       <Router>
         <div className="min-h-screen bg-cream">
+          <div id="top" style={{ position: 'absolute', top: 0, left: 0, width: '1px', height: '1px' }}></div>
           <Header />
           <main>
             <Routes>
@@ -37,7 +38,7 @@ function App() {
           </main>
           <Footer />
           <VoiceglowChat />
-          <a className="back-home" id="backHome" href="/" aria-label="Back to Home" hidden>
+          <a className="back-home" id="backHome" href="/" aria-label="Back to Home">
             ← Home
           </a>
         </div>

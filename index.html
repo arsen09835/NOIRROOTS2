@@ -36,13 +36,45 @@
     <script type="module" src="/src/main.tsx"></script>
     <script>
 (function () {
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+  if (location.hash && location.hash.toLowerCase() === '#top') {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }
+
+  const ensureTop = (el) => {
+    const txt = (el.textContent || '').trim().toLowerCase();
+    const isPreOrder = txt.includes('pre-order') || el.dataset.scrollTop === 'true';
+    if (!isPreOrder) return;
+    let href = el.getAttribute('href') || '';
+    if (href && !href.includes('#top')) {
+      const parts = href.split('#')[0];
+      const hash = '#top';
+      el.setAttribute('href', parts + hash);
+    }
+    el.addEventListener('click', () => {
+      setTimeout(() => window.scrollTo({ top: 0, left: 0, behavior: 'instant' }), 50);
+    }, { passive: true });
+  };
+
+  document.querySelectorAll('a,button').forEach(ensureTop);
+
   const back = document.getElementById('backHome');
   if (!back) return;
 
-  const notHome = location.pathname !== '/' && location.pathname !== '/index.html';
-  if (notHome) back.hidden = false;
-
-  if (!notHome && location.hash.toLowerCase() === '#buy') back.hidden = false;
+  const onHome = location.pathname === '/' || location.pathname === '/index.html';
+  if (onHome) {
+    back.setAttribute('href', '#top');
+    back.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    });
+  } else {
+    back.setAttribute('href', '/#top');
+    back.addEventListener('click', () => {
+      setTimeout(() => window.scrollTo({ top: 0, left: 0, behavior: 'instant' }), 80);
+    }, { passive: true });
+  }
 
   const isShopText = (el) => /shop/i.test((el.textContent || '').trim());
   const navLinks = Array.from(document.querySelectorAll('a,button'));
