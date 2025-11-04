@@ -180,6 +180,57 @@ select:focus {
   .founder-caption { text-align: center; }
 }
 
+/* Clean founder card layout */
+.founder-card {
+  max-width: 720px;
+  margin: 48px auto;
+  padding: 0 16px;
+}
+
+.founder-figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0;
+}
+
+.founder-avatar {
+  display: block;
+  width: clamp(280px, 70vw, 360px);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+@media (min-width: 1024px) {
+  .founder-avatar {
+    width: 180px;
+  }
+}
+
+.founder-name {
+  margin-top: 24px;
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.founder-role {
+  margin-top: 6px;
+  font-weight: 600;
+  color: #C8A86B;
+}
+
+/* Safety: kill any old floats/absolute rules */
+#founder img,
+#founder .founder-name,
+#founder .founder-role {
+  float: none !important;
+  position: static !important;
+}
+
 /* Make the first product image shorter on mobile so price/CTA are visible */
 @media (max-width: 768px) {
   .product-hero-img img,

@@ -21,33 +21,31 @@ const AboutPage = () => {
             </p>
           </div>
 
-          {/* Founder Story */}
-          <div className="story-hero bg-white rounded-lg p-8 mb-12 shadow-sm" data-section="story">
-            <div className="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8 mb-8">
-              <div className="story-hero-img media aspect-square w-32 rounded-full overflow-hidden flex-shrink-0">
-                <img
-                  src="/Untitled design (38).png"
-                  alt="Joseph Castillo, Founder of Noir Roots"
-                  width="128"
-                  height="128"
-                  loading="lazy"
-                />
-              </div>
-              <div>
-                <h2 className="text-2xl font-playfair font-bold text-black mb-2">
-                  From Broken Strands to Noir Roots
-                </h2>
-                <div className="founder-caption">
-                  <h3 className="font-source text-black/70 text-base font-normal">
-                    Joseph Castillo
-                  </h3>
-                  <p className="font-source text-gold font-semibold">
-                    Founder & Creator
-                  </p>
-                </div>
-              </div>
-            </div>
+          {/* Page Title */}
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-playfair font-bold text-black mb-4">
+              From Broken Strands to Noir Roots
+            </h2>
+          </div>
 
+          {/* Founder Card */}
+          <section id="founder" className="founder-card">
+            <figure className="founder-figure">
+              <img
+                className="founder-avatar"
+                src="/Untitled design (38).png"
+                alt="Joseph Castillo, Founder holding the product"
+                loading="lazy"
+              />
+              <figcaption>
+                <h3 className="founder-name">Joseph Castillo</h3>
+                <p className="founder-role">Founder & Creator</p>
+              </figcaption>
+            </figure>
+          </section>
+
+          {/* Founder Story */}
+          <div className="bg-white rounded-lg p-8 mb-12 shadow-sm">
             <div className="space-y-4 font-source text-black/80 leading-relaxed">
               <p>
                 For years, I was on a frantic search for the "perfect" hair oil. I tried every store-bought bottle promising lush growth, incredible shine, and miracle repairs. Instead of the healthy hair of my dreams, I was handed a nightmare. My hair became brittle, my scalp irritated, and the most terrifying part - chunks of my hair started falling out.
