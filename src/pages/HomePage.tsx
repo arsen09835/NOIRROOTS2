@@ -285,10 +285,6 @@ const HomePage = () => {
                 a product—it was my salvation.
               </p>
               
-              <p>
-                Slowly, then undeniably, my hair transformed. The shedding stopped. Broken hair became strong. 
-                I saw new growth filling sparse areas I thought were lost forever. I had brought my hair back to life.
-              </p>
             </div>
 
             <div className="text-center mt-8">
