@@ -35,6 +35,14 @@ const AboutPage = () => {
 
           {/* Founder Story */}
           <div className="bg-white rounded-lg p-8 mb-12 shadow-sm">
+            <div className="mb-6">
+              <p className="font-playfair text-black font-semibold">
+                Joseph Castillo
+              </p>
+              <p className="font-source text-gold text-sm">
+                Founder & Creator
+              </p>
+            </div>
             <div className="space-y-4 font-source text-black/80 leading-relaxed">
               <p>
                 For years, I was on a frantic search for the "perfect" hair oil. I tried every store-bought bottle promising lush growth, incredible shine, and miracle repairs. Instead of the healthy hair of my dreams, I was handed a nightmare. My hair became brittle, my scalp irritated, and the most terrifying part - chunks of my hair started falling out.
