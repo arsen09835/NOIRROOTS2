@@ -38,9 +38,6 @@ function App() {
           </main>
           <Footer />
           <VoiceglowChat />
-          <a className="back-home" id="backHome" href="/" aria-label="Back to Home">
-            ← Home
-          </a>
         </div>
       </Router>
     </HelmetProvider>
