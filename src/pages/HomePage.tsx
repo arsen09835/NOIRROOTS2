@@ -74,7 +74,7 @@ const HomePage = () => {
       </div>
 
       {/* Hero Section */}
-      <section id="hero" className="py-16 bg-gradient-to-br from-cream to-white">
+      <section id="home" className="py-16 bg-gradient-to-br from-cream to-white">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="text-center lg:text-left">
@@ -100,9 +100,9 @@ const HomePage = () => {
               </div>
 
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-3 sm:space-y-0 sm:space-x-4 mb-8">
-                <Link to="/shop" className="btn-primary">
+                <a href="#buy" className="btn-primary">
                   Shop Now
-                </Link>
+                </a>
                 <Link to="/ingredients" className="btn-secondary">
                   See Ingredients
                 </Link>
@@ -135,7 +135,7 @@ const HomePage = () => {
       </section>
 
       {/* Featured Product */}
-      <section id="featured-product" className="py-16 bg-white">
+      <section id="buy" className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-5 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-playfair font-bold text-black mb-4">
             Featured Product
@@ -331,6 +331,16 @@ const HomePage = () => {
           </p>
         </div>
       </section>
+
+      {/* Back to Home Button */}
+      <button
+        className="back-home"
+        id="backHome"
+        aria-label="Back to Home"
+        hidden
+      >
+        ← Home
+      </button>
     </>
   );
 };

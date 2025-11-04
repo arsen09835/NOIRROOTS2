@@ -34,5 +34,46 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+(function () {
+  const backBtn = document.getElementById('backHome');
+  const buy = document.getElementById('buy');
+  const home = document.getElementById('home');
+
+  if (!backBtn || !buy || !home) return;
+
+  document.documentElement.style.scrollBehavior = 'smooth';
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        backBtn.hidden = false;
+      } else {
+        backBtn.hidden = true;
+      }
+    });
+  }, { threshold: 0.2 });
+  io.observe(buy);
+
+  backBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (window.history.length > 1 && document.referrer) {
+      window.history.back();
+      setTimeout(() => { location.hash = '#home'; }, 300);
+    } else {
+      location.hash = '#home';
+    }
+  });
+
+  const shopLinks = Array.from(document.querySelectorAll('a,button'))
+    .filter(el => /shop/i.test(el.textContent || '') || el.getAttribute('href') === '#buy');
+
+  shopLinks.forEach(el => {
+    el.setAttribute('href', '#buy');
+    el.addEventListener('click', () => {
+    }, { passive: true });
+  });
+})();
+    </script>
   </body>
 </html>
