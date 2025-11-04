@@ -196,8 +196,8 @@ const ContactPage = () => {
                 <p className="font-source text-black/70 text-sm mb-4">
                   Check our FAQ page for instant answers to common questions about usage, ingredients, and shipping.
                 </p>
-                <a
-                  href="/faq#top"
+                <a 
+                  href="/faq"
                   className="font-source text-gold hover:text-gold/80 transition-colors text-sm font-semibold"
                 >
                   View FAQ →

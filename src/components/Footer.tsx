@@ -82,22 +82,22 @@ const Footer = () => {
             <h4 className="font-source font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link to="/policies#top" className="font-source text-cream/80 hover:text-cream transition-colors">
+                <Link to="/policies" className="font-source text-cream/80 hover:text-cream transition-colors">
                   Shipping & Returns
                 </Link>
               </li>
               <li>
-                <Link to="/policies#top" className="font-source text-cream/80 hover:text-cream transition-colors">
+                <Link to="/policies" className="font-source text-cream/80 hover:text-cream transition-colors">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link to="/policies#top" className="font-source text-cream/80 hover:text-cream transition-colors">
+                <Link to="/policies" className="font-source text-cream/80 hover:text-cream transition-colors">
                   Terms of Service
                 </Link>
               </li>
               <li>
-                <Link to="/faq#top" className="font-source text-cream/80 hover:text-cream transition-colors">
+                <Link to="/faq" className="font-source text-cream/80 hover:text-cream transition-colors">
                   FAQ
                 </Link>
               </li>

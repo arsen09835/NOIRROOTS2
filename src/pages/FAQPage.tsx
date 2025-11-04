@@ -105,8 +105,8 @@ const FAQPage = () => {
             <p className="font-source text-black/70 mb-6">
               We're here to help! Reach out to us directly and we'll get back to you within 24 hours.
             </p>
-            <a
-              href="/contact#top"
+            <a 
+              href="/contact"
               className="btn-primary inline-block"
             >
               Contact Us
