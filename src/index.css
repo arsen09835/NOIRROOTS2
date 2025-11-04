@@ -197,31 +197,25 @@ select:focus {
 
 .founder-avatar {
   display: block;
-  width: clamp(280px, 70vw, 360px);
+  width: clamp(280px, 50vw, 480px);
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
-@media (min-width: 1024px) {
-  .founder-avatar {
-    width: 180px;
-  }
-}
-
 .founder-name {
-  margin-top: 24px;
-  font-size: clamp(28px, 4vw, 48px);
-  font-weight: 700;
-  letter-spacing: 0.2px;
+  margin-top: 32px;
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 400;
+  letter-spacing: 0.5px;
   color: #000;
   font-family: 'Playfair Display', serif;
 }
 
 .founder-role {
-  margin-top: 8px;
-  font-size: clamp(18px, 2.5vw, 28px);
+  margin-top: 12px;
+  font-size: clamp(20px, 3vw, 32px);
   font-weight: 600;
   color: #C8A86B;
 }
