@@ -268,23 +268,33 @@ const HomePage = () => {
               </div>
             </div>
 
-            <div className="space-y-4 font-source text-black/80 leading-relaxed">
-              <p>
-                For years, I searched for the "perfect" hair oil. Instead of healthy hair, I got brittle strands, 
-                scalp irritation, and chunks of hair falling out. Mass-produced formulas filled with harsh synthetics 
-                weren't nourishing my hair—they were suffocating it.
-              </p>
-              
-              <p className="font-semibold text-gold">
-                If I couldn't find a product I trusted, I would create one.
-              </p>
-              
-              <p>
-                Armed with determination, I turned to nature's wisdom. Months of research, blending, and testing 
-                in my kitchen led to this powerful, synergistic blend of premium natural oils. This wasn't just 
-                a product—it was my salvation.
-              </p>
-              
+            <div className="relative">
+              <div className="space-y-4 font-source text-black/80 leading-relaxed">
+                <p>
+                  For years, I searched for the "perfect" hair oil. Instead of healthy hair, I got brittle strands,
+                  scalp irritation, and chunks of hair falling out. Mass-produced formulas filled with harsh synthetics
+                  weren't nourishing my hair—they were suffocating it.
+                </p>
+
+                <p className="font-semibold text-gold">
+                  If I couldn't find a product I trusted, I would create one.
+                </p>
+
+                <p>
+                  Armed with determination, I turned to nature's wisdom. Months of research, blending, and testing
+                  in my kitchen led to this powerful, synergistic blend of premium natural oils. This wasn't just
+                  a product—it was my salvation.
+                </p>
+              </div>
+
+              <div className="mt-8 text-left">
+                <p className="font-playfair text-black font-semibold">
+                  Joseph Castillo
+                </p>
+                <p className="font-source text-gold text-sm">
+                  Founder & Creator
+                </p>
+              </div>
             </div>
 
             <div className="text-center mt-8">
