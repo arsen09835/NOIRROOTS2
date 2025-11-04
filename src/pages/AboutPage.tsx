@@ -21,13 +21,6 @@ const AboutPage = () => {
             </p>
           </div>
 
-          {/* Page Title */}
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-playfair font-bold text-black mb-4">
-              From Broken Strands to Noir Roots
-            </h2>
-          </div>
-
           {/* Founder Card */}
           <section id="founder" className="founder-card">
             <figure className="founder-figure">
