@@ -8,10 +8,10 @@ const Header = () => {
   const isHomePage = location.pathname === '/';
 
   const navigation = [
-    { name: 'Home', href: '/' },
+    { name: 'Home', href: '/#top' },
     { name: 'Shop', href: '/#buy' },
-    { name: 'About', href: '/about' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'About', href: '/about#top' },
+    { name: 'Contact', href: '/contact#top' },
   ];
 
   const homeNavigation = [
@@ -19,7 +19,7 @@ const Header = () => {
     { name: 'How to Use', href: '#how-to-use' },
     { name: 'My Story', href: '#my-story' },
     { name: 'Shop', href: '#buy' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Contact', href: '/contact#top' },
   ];
 
   const currentNavigation = isHomePage ? homeNavigation : navigation;
@@ -53,7 +53,7 @@ const Header = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link
-            to="/"
+            to="/#top"
             className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
             aria-label="Go to Home"
           >

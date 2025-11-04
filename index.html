@@ -31,60 +31,78 @@
       }
     </style>
     <title>Noir Roots Hair Oil Landing Page</title>
+    <!-- Early scroll restoration script -->
+    <script id="top-on-nav-early">
+      (function () {
+        try { history.scrollRestoration = 'manual'; } catch(_) {}
+        var goTop = function(){ window.scrollTo(0, 0); };
+        if (!location.hash || location.hash.toLowerCase() === '#top') {
+          goTop(); setTimeout(goTop, 0); setTimeout(goTop, 120);
+        }
+      })();
+    </script>
   </head>
   <body>
+    <!-- Global top anchor -->
+    <div id="top" style="position:absolute;top:0;left:0;width:1px;height:1px;"></div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <script>
+    <!-- Robust link normalizer and scroll management -->
+    <script id="top-on-nav">
 (function () {
-  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  try { history.scrollRestoration = 'manual'; } catch(_) {}
 
-  if (location.hash && location.hash.toLowerCase() === '#top') {
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  var ALLOW_HASH = new Set([
+    '#home', '#ingredients', '#how-to', '#story', '#buy',
+    '#reviews', '#faq', '#contact', '#top'
+  ]);
+
+  function isSamePath(u) {
+    return u.pathname.replace(/\/+$/, '') === location.pathname.replace(/\/+$/, '');
   }
 
-  const ensureTop = (el) => {
-    const txt = (el.textContent || '').trim().toLowerCase();
-    const isPreOrder = txt.includes('pre-order') || el.dataset.scrollTop === 'true';
-    if (!isPreOrder) return;
-    let href = el.getAttribute('href') || '';
-    if (href && !href.includes('#top')) {
-      const parts = href.split('#')[0];
-      const hash = '#top';
-      el.setAttribute('href', parts + hash);
-    }
-    el.addEventListener('click', () => {
-      setTimeout(() => window.scrollTo({ top: 0, left: 0, behavior: 'instant' }), 50);
-    }, { passive: true });
-  };
+  function patchLinks(root) {
+    (root || document).querySelectorAll('a, [data-href], button[data-href]').forEach(function (el) {
+      var href = el.getAttribute('href') || el.getAttribute('data-href');
+      if (!href) return;
 
-  document.querySelectorAll('a,button').forEach(ensureTop);
+      if (href[0] === '#') return;
 
-  const back = document.getElementById('backHome');
-  if (!back) return;
+      try {
+        var url = new URL(href, location.origin);
+        if (url.origin !== location.origin) return;
 
-  const onHome = location.pathname === '/' || location.pathname === '/index.html';
-  if (onHome) {
-    back.setAttribute('href', '#top');
-    back.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+        if (isSamePath(url)) {
+          if (!url.hash || !ALLOW_HASH.has(url.hash.toLowerCase())) return;
+        } else {
+          url.hash = '#top';
+          var newHref = url.pathname + url.search + url.hash;
+          if (el.tagName === 'A') el.setAttribute('href', newHref);
+          else el.setAttribute('data-href', newHref);
+        }
+      } catch(e) {}
     });
-  } else {
-    back.setAttribute('href', '/#top');
-    back.addEventListener('click', () => {
-      setTimeout(() => window.scrollTo({ top: 0, left: 0, behavior: 'instant' }), 80);
-    }, { passive: true });
   }
 
-  const isShopText = (el) => /shop/i.test((el.textContent || '').trim());
-  const navLinks = Array.from(document.querySelectorAll('a,button'));
-  navLinks.forEach(el => {
-    const href = el.getAttribute('href') || '';
-    if (isShopText(el) || href === '/shop' || href === 'shop' || href === '#buy') {
-      el.setAttribute('href', '/#buy');
-    }
-  });
+  var toTopSoon = function(){ requestAnimationFrame(function(){ window.scrollTo(0,0); }); };
+  var _push = history.pushState, _replace = history.replaceState;
+  history.pushState = function(){ _push.apply(this, arguments); toTopSoon(); };
+  history.replaceState = function(){ _replace.apply(this, arguments); toTopSoon(); };
+  window.addEventListener('popstate', toTopSoon);
+
+  document.addEventListener('click', function (e) {
+    var el = e.target && e.target.closest('a, [data-href], button[data-href]');
+    if (!el) return;
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    if (el.getAttribute('target') === '_blank') return;
+
+    patchLinks(document);
+    setTimeout(function(){ window.scrollTo(0,0); }, 60);
+  }, { capture: true });
+
+  patchLinks(document);
+  var mo = new MutationObserver(function(m){ patchLinks(document); });
+  mo.observe(document.documentElement, { childList: true, subtree: true });
 
   try { document.documentElement.style.scrollBehavior = 'smooth'; } catch(_) {}
 })();

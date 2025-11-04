@@ -103,7 +103,7 @@ const HomePage = () => {
                 <a href="#buy" className="btn-primary">
                   Shop Now
                 </a>
-                <Link to="/ingredients" className="btn-secondary">
+                <Link to="/ingredients#top" className="btn-secondary">
                   See Ingredients
                 </Link>
               </div>
@@ -237,7 +237,7 @@ const HomePage = () => {
             ))}
           </div>
           
-          <Link to="/ingredients" className="btn-secondary inline-block">
+          <Link to="/ingredients#top" className="btn-secondary inline-block">
             View Full Ingredient Details
           </Link>
         </div>
@@ -298,7 +298,7 @@ const HomePage = () => {
             </div>
 
             <div className="text-center mt-8">
-              <Link to="/about" className="btn-secondary">
+              <Link to="/about#top" className="btn-secondary">
                 Read My Full Story
               </Link>
             </div>
