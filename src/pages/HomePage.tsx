@@ -266,14 +266,6 @@ const HomePage = () => {
                   loading="lazy"
                 />
               </div>
-              <div className="founder-caption text-center md:text-left">
-                <h3 className="text-xl font-playfair font-bold text-black mb-2">
-                  Joseph Castillo
-                </h3>
-                <p className="font-source text-gold font-semibold">
-                  Founder & Creator
-                </p>
-              </div>
             </div>
 
             <div className="space-y-4 font-source text-black/80 leading-relaxed">
