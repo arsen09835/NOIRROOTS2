@@ -35,9 +35,9 @@ const AboutPage = () => {
 
           {/* Founder Story */}
           <div className="bg-white rounded-lg p-8 mb-12 shadow-sm">
-            <div className="text-center mb-8">
-              <h3 className="founder-name">Joseph Castillo</h3>
-              <p className="founder-role">Founder & Creator</p>
+            <div className="text-center mb-6">
+              <h3 className="text-2xl font-playfair font-semibold text-black mb-1">Joseph Castillo</h3>
+              <p className="text-lg font-source font-medium text-gold">Founder & Creator</p>
             </div>
             <div className="space-y-4 font-source text-black/80 leading-relaxed">
               <p>
