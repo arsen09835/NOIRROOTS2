@@ -212,13 +212,16 @@ select:focus {
 
 .founder-name {
   margin-top: 24px;
-  font-size: clamp(24px, 3vw, 36px);
-  font-weight: 800;
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700;
   letter-spacing: 0.2px;
+  color: #000;
+  font-family: 'Playfair Display', serif;
 }
 
 .founder-role {
-  margin-top: 6px;
+  margin-top: 8px;
+  font-size: clamp(18px, 2.5vw, 28px);
   font-weight: 600;
   color: #C8A86B;
 }
