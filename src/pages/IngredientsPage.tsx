@@ -43,7 +43,7 @@ const IngredientsPage = () => {
       name: "Vitamin E",
       benefit: "Powerful antioxidant protection against environmental damage and free radicals",
       sensory: "Invisible protection, enhanced smoothness",
-      image: "/coconut.png" // Placeholder
+      image: "/OIP.webp"
     }
   ];
 
