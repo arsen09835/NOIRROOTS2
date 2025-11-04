@@ -8,7 +8,8 @@ const Header = () => {
   const isHomePage = location.pathname === '/';
 
   const navigation = [
-    { name: 'Shop', href: '/shop' },
+    { name: 'Home', href: '/' },
+    { name: 'Shop', href: '/#buy' },
     { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' },
   ];
@@ -34,12 +35,15 @@ const Header = () => {
         const headerOffset = header ? header.offsetHeight : 0;
         const elementPosition = target.getBoundingClientRect().top + window.scrollY;
         const offsetPosition = elementPosition - headerOffset - 20;
-        
+
         window.scrollTo({
           top: offsetPosition,
           behavior: 'smooth'
         });
       }
+    } else if (href.startsWith('/#')) {
+      e.preventDefault();
+      window.location.href = href;
     }
   };
 
@@ -48,9 +52,10 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link 
+          <Link
             to="/"
             className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
+            aria-label="Go to Home"
           >
             <img 
               src="/Untitled design (47).png" 

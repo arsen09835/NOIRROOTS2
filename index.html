@@ -36,43 +36,24 @@
     <script type="module" src="/src/main.tsx"></script>
     <script>
 (function () {
-  const backBtn = document.getElementById('backHome');
-  const buy = document.getElementById('buy');
-  const home = document.getElementById('home');
+  const back = document.getElementById('backHome');
+  if (!back) return;
 
-  if (!backBtn || !buy || !home) return;
+  const notHome = location.pathname !== '/' && location.pathname !== '/index.html';
+  if (notHome) back.hidden = false;
 
-  document.documentElement.style.scrollBehavior = 'smooth';
+  if (!notHome && location.hash.toLowerCase() === '#buy') back.hidden = false;
 
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        backBtn.hidden = false;
-      } else {
-        backBtn.hidden = true;
-      }
-    });
-  }, { threshold: 0.2 });
-  io.observe(buy);
-
-  backBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    if (window.history.length > 1 && document.referrer) {
-      window.history.back();
-      setTimeout(() => { location.hash = '#home'; }, 300);
-    } else {
-      location.hash = '#home';
+  const isShopText = (el) => /shop/i.test((el.textContent || '').trim());
+  const navLinks = Array.from(document.querySelectorAll('a,button'));
+  navLinks.forEach(el => {
+    const href = el.getAttribute('href') || '';
+    if (isShopText(el) || href === '/shop' || href === 'shop' || href === '#buy') {
+      el.setAttribute('href', '/#buy');
     }
   });
 
-  const shopLinks = Array.from(document.querySelectorAll('a,button'))
-    .filter(el => /shop/i.test(el.textContent || '') || el.getAttribute('href') === '#buy');
-
-  shopLinks.forEach(el => {
-    el.setAttribute('href', '#buy');
-    el.addEventListener('click', () => {
-    }, { passive: true });
-  });
+  try { document.documentElement.style.scrollBehavior = 'smooth'; } catch(_) {}
 })();
     </script>
     <script>

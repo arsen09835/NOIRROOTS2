@@ -331,16 +331,6 @@ const HomePage = () => {
           </p>
         </div>
       </section>
-
-      {/* Back to Home Button */}
-      <button
-        className="back-home"
-        id="backHome"
-        aria-label="Back to Home"
-        hidden
-      >
-        ← Home
-      </button>
     </>
   );
 };
