@@ -244,7 +244,7 @@ const HomePage = () => {
       </section>
 
       {/* My Story Section */}
-      <section id="my-story" className="py-16 bg-cream">
+      <section id="my-story" className="story-hero py-16 bg-cream" data-section="story">
         <div className="max-w-4xl mx-auto px-5 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-playfair font-bold text-black mb-4">
@@ -257,16 +257,16 @@ const HomePage = () => {
 
           <div className="bg-white rounded-lg p-8 shadow-sm">
             <div className="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8 mb-8">
-              <div className="media aspect-square w-32 rounded-full overflow-hidden flex-shrink-0">
-                <img 
-                  src="/Untitled design (38).png" 
+              <div className="story-hero-img media aspect-square w-32 rounded-full overflow-hidden flex-shrink-0">
+                <img
+                  src="/Untitled design (38).png"
                   alt="Joseph Castillo, Founder of Noir Roots"
                   width="128"
                   height="128"
                   loading="lazy"
                 />
               </div>
-              <div className="text-center md:text-left">
+              <div className="founder-caption text-center md:text-left">
                 <h3 className="text-xl font-playfair font-bold text-black mb-2">
                   Joseph Castillo
                 </h3>

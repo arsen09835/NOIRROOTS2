@@ -22,11 +22,11 @@ const AboutPage = () => {
           </div>
 
           {/* Founder Story */}
-          <div className="bg-white rounded-lg p-8 mb-12 shadow-sm">
+          <div className="story-hero bg-white rounded-lg p-8 mb-12 shadow-sm" data-section="story">
             <div className="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8 mb-8">
-              <div className="media aspect-square w-32 rounded-full overflow-hidden flex-shrink-0">
-                <img 
-                  src="/Untitled design (38).png" 
+              <div className="story-hero-img media aspect-square w-32 rounded-full overflow-hidden flex-shrink-0">
+                <img
+                  src="/Untitled design (38).png"
                   alt="Joseph Castillo, Founder of Noir Roots"
                   width="128"
                   height="128"
@@ -37,9 +37,14 @@ const AboutPage = () => {
                 <h2 className="text-2xl font-playfair font-bold text-black mb-2">
                   From Broken Strands to Noir Roots
                 </h2>
-                <p className="font-source text-black/70">
-                  Joseph Castillo, Founder
-                </p>
+                <div className="founder-caption">
+                  <h3 className="font-source text-black/70 text-base font-normal">
+                    Joseph Castillo
+                  </h3>
+                  <p className="font-source text-gold font-semibold">
+                    Founder & Creator
+                  </p>
+                </div>
               </div>
             </div>
 

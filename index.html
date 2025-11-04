@@ -107,5 +107,37 @@
   setTimeout(kill, 1500);
 })();
     </script>
+    <script>
+(function () {
+  const blocks = document.querySelectorAll('.story-hero, #my-story, [data-section="story"]');
+  blocks.forEach((wrap) => {
+    const imgWrap =
+      wrap.querySelector('.story-hero-img') ||
+      wrap.querySelector('figure, .image, .media, .hero-image');
+
+    let caption =
+      wrap.querySelector('.founder-caption') ||
+      wrap.querySelector('[data-founder], .founder, .founder-meta, .author, .caption');
+
+    if (!imgWrap) return;
+
+    if (!caption) {
+      const txtNode =
+        wrap.querySelector('.founder, .founder-meta, .author, .caption, aside, [data-founder]');
+      const name = txtNode?.querySelector('h3, h4, .name')?.textContent?.trim() || 'Joseph Castillo';
+      const role = txtNode?.querySelector('p, small, .role')?.textContent?.trim() || 'Founder & Creator';
+      caption = document.createElement('div');
+      caption.className = 'founder-caption';
+      caption.innerHTML = `<h3>${name}</h3><p>${role}</p>`;
+    } else {
+      caption.classList.add('founder-caption');
+    }
+
+    if (caption !== imgWrap.nextElementSibling) {
+      imgWrap.insertAdjacentElement('afterend', caption);
+    }
+  });
+})();
+    </script>
   </body>
 </html>
