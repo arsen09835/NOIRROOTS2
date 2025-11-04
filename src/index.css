@@ -138,8 +138,8 @@ select:focus {
   .story-hero-img img,
   .story-hero-img picture,
   .story-hero-img canvas {
-    /* ~83% of previous footprint; tune with clamp so it never gets oversized */
-    max-width: clamp(360px, 34vw, 520px);
+    /* Reduced by 1.5x from previous size (~56% of original) */
+    max-width: clamp(240px, 23vw, 350px);
     height: auto;
   }
 
