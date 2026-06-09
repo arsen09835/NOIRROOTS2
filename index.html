@@ -96,6 +96,14 @@
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     if (el.getAttribute('target') === '_blank') return;
 
+    // Don't force scroll-to-top for in-page section anchors (same-page navigation)
+    var rawHref = el.getAttribute('href') || el.getAttribute('data-href') || '';
+    if (rawHref.charAt(0) === '#') return;
+    try {
+      var u = new URL(rawHref, location.origin);
+      if (isSamePath(u) && u.hash && ALLOW_HASH.has(u.hash.toLowerCase())) return;
+    } catch (err) {}
+
     patchLinks(document);
     setTimeout(function(){ window.scrollTo(0,0); }, 60);
   }, { capture: true });
