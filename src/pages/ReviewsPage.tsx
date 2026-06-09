@@ -22,7 +22,7 @@ const ReviewsPage = () => {
           </div>
 
           {/* Coming Soon Message */}
-          <div className="bg-white rounded-lg shadow-sm p-12 text-center">
+          <div className="bg-white rounded-lg shadow-md p-12 text-center">
             <div className="w-20 h-20 bg-gold/20 rounded-full flex items-center justify-center mx-auto mb-6">
               <MessageCircle className="text-gold" size={32} />
             </div>

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { Shield, Leaf, Heart, MapPin, ChevronRight, Clock, Moon, Sparkles } from 'lucide-react';
@@ -34,16 +33,6 @@ const HomePage = () => {
     { text: "Small-Batch", icon: <Heart size={16} /> },
     { text: "UK-based", icon: <MapPin size={16} /> }
   ];
-
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-    e.preventDefault();
-    const target = document.getElementById(id);
-    if (!target) return;
-    const header = document.querySelector('header');
-    const headerOffset = header ? (header as HTMLElement).offsetHeight : 0;
-    const top = target.getBoundingClientRect().top + window.scrollY - headerOffset - 20;
-    window.scrollTo({ top, behavior: 'smooth' });
-  };
 
   return (
     <>
@@ -83,43 +72,58 @@ const HomePage = () => {
         Pre-orders open, dispatching October 22
       </div>
 
-      {/* Hero Section */}
-      <section id="home" className="py-16 bg-gradient-to-br from-cream to-white">
+      {/* Hero / First Product Section */}
+      <section id="home" className="py-10 lg:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* Product image */}
+            <div className="flex justify-center order-first lg:order-last">
+              <div className="media aspect-4/5 w-56 sm:w-64 lg:w-80 rounded-2xl border border-black/5 shadow-xl overflow-hidden bg-white">
+                <img
+                  src="/2025-09-25 22.10.49.jpg"
+                  alt="Noir Roots Hair Oil - Premium 100ml bottle with natural ingredients"
+                  width="320"
+                  height="400"
+                  loading="eager"
+                />
+              </div>
+            </div>
+
+            {/* Product info */}
             <div className="text-center lg:text-left">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-playfair font-bold text-black leading-tight mb-6">
+              <p className="font-source text-xs sm:text-sm font-semibold tracking-widest uppercase text-gold mb-2">
+                Noir Roots Hair Oil · 100ml
+              </p>
+
+              <h1 className="text-3xl sm:text-4xl lg:text-6xl font-playfair font-bold text-black leading-tight mb-3 lg:mb-5">
                 Nature. Nourish. Shine.
               </h1>
-              
-              <p className="text-lg sm:text-xl font-source text-black/70 mb-8 leading-relaxed">
-                A clean, nutrient-rich oil for hydrated, resilient hair and a soothed scalp. 
+
+              <p className="font-source text-black/70 mb-5 leading-relaxed text-base sm:text-lg lg:text-xl">
+                A clean, nutrient-rich oil for hydrated, resilient hair and a soothed scalp.
                 Crafted with premium plant-powered ingredients for visible results.
               </p>
 
-              <div className="grid grid-cols-2 gap-4 mb-8 text-sm font-source">
-                {benefits.map((benefit, index) => (
-                  <div key={index} className="flex items-start space-x-2">
-                    <div className="flex-shrink-0 mt-1">{benefit.icon}</div>
-                    <div>
-                      <h3 className="font-semibold text-black">{benefit.title}</h3>
-                      <p className="text-black/60 text-xs">{benefit.description}</p>
-                    </div>
-                  </div>
-                ))}
+              {/* Price + availability */}
+              <div className="flex items-center justify-center lg:justify-start gap-3 mb-5">
+                <span className="text-3xl font-playfair font-bold text-black">£30</span>
+                <span className="bg-gold/10 text-gold text-xs font-source font-semibold px-3 py-1 rounded-full">
+                  Pre-order · ships Oct 22
+                </span>
               </div>
 
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-3 sm:space-y-0 sm:space-x-4 mb-8">
-                <a href="#buy" onClick={(e) => scrollToSection(e, 'buy')} className="btn-primary">
-                  Shop Now
-                </a>
-                <Link to="/ingredients#top" className="btn-secondary">
+              {/* CTAs */}
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 mb-6">
+                <Link to="/product/noir-roots-hair-oil-100ml#top" className="btn-primary w-full sm:w-auto text-center">
+                  Pre-order Now
+                </Link>
+                <Link to="/ingredients#top" className="btn-secondary w-full sm:w-auto text-center">
                   See Ingredients
                 </Link>
               </div>
 
-              {/* Trust Strip */}
-              <div className="flex flex-wrap justify-center lg:justify-start gap-4 text-xs font-source text-black/60">
+              {/* Trust strip */}
+              <div className="flex flex-wrap justify-center lg:justify-start gap-x-4 gap-y-2 text-xs font-source text-black/60">
                 {trustBadges.map((badge, index) => (
                   <div key={index} className="flex items-center space-x-1">
                     {badge.icon}
@@ -128,18 +132,19 @@ const HomePage = () => {
                 ))}
               </div>
             </div>
+          </div>
 
-            <div className="flex justify-center order-first lg:order-last">
-              <div className="media aspect-4/5 w-80 rounded-2xl shadow-2xl overflow-hidden">
-                <img 
-                  src="/2025-09-25 22.10.49.jpg" 
-                  alt="Noir Roots Hair Oil - Premium 100ml bottle with natural ingredients"
-                  width="320"
-                  height="400"
-                  loading="eager"
-                />
+          {/* Benefits — secondary detail, below the fold */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-10 lg:mt-16 text-sm font-source">
+            {benefits.map((benefit, index) => (
+              <div key={index} className="bg-white rounded-lg border border-black/5 shadow-md p-4 flex items-start space-x-2">
+                <div className="flex-shrink-0 mt-1">{benefit.icon}</div>
+                <div>
+                  <h3 className="font-semibold text-black">{benefit.title}</h3>
+                  <p className="text-black/60 text-xs">{benefit.description}</p>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -180,7 +185,7 @@ const HomePage = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="group bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+            <div className="group bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-playfair font-semibold text-black">Pre-wash Treatment</h3>
                 <Clock className="text-gold" size={20} />
@@ -190,7 +195,7 @@ const HomePage = () => {
               </p>
             </div>
 
-            <div className="group bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+            <div className="group bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-playfair font-semibold text-black">Overnight Intensive</h3>
                 <Moon className="text-gold" size={20} />
@@ -200,7 +205,7 @@ const HomePage = () => {
               </p>
             </div>
 
-            <div className="group bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+            <div className="group bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-playfair font-semibold text-black">Finishing Touch</h3>
                 <Sparkles className="text-gold" size={20} />
@@ -265,7 +270,7 @@ const HomePage = () => {
             </p>
           </div>
 
-          <div className="bg-white rounded-lg p-8 shadow-sm">
+          <div className="bg-white rounded-lg p-8 shadow-md">
             {/* Founder image + byline (left), full story (right) */}
             <div className="flex flex-col md:flex-row md:items-start gap-8">
               <div className="w-40 md:w-48 flex-shrink-0 mx-auto md:mx-0">

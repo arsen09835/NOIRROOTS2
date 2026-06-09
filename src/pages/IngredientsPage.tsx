@@ -75,7 +75,7 @@ const IngredientsPage = () => {
 
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
             {ingredients.map((ingredient, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-sm border border-black/10 overflow-hidden hover:shadow-md transition-shadow duration-300">
+              <div key={index} className="bg-white rounded-lg shadow-md border border-black/10 overflow-hidden hover:shadow-lg transition-shadow duration-300">
                 <div className="media aspect-square sm:aspect-4/5">
                   <img 
                     src={ingredient.image} 
@@ -109,7 +109,7 @@ const IngredientsPage = () => {
           </div>
 
           {/* Why These Ingredients */}
-          <div className="mt-16 bg-white p-8 rounded-lg shadow-sm">
+          <div className="mt-16 bg-white p-8 rounded-lg shadow-md">
             <h2 className="text-2xl font-playfair font-bold text-black mb-6 text-center">
               Why These Seven?
             </h2>

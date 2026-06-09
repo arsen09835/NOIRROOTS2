@@ -212,7 +212,7 @@ const PoliciesPage = () => {
 
             {/* Policy Content */}
             <div className="lg:col-span-3">
-              <div className="bg-white rounded-lg shadow-sm border border-black/10 p-8">
+              <div className="bg-white rounded-lg shadow-md border border-black/10 p-8">
                 <h2 className="text-2xl font-playfair font-bold text-black mb-6">
                   {policies[activePolicy as keyof typeof policies].title}
                 </h2>
