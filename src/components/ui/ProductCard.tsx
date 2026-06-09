@@ -19,7 +19,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   isPreOrder = true
 }) => {
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-black/10 overflow-hidden hover:shadow-md transition-shadow duration-300">
+    <div className="bg-white rounded-lg shadow-md border border-black/10 overflow-hidden hover:shadow-lg transition-shadow duration-300">
       <Link to={`/product/${slug}`}>
         <div className="media aspect-square">
           <img
