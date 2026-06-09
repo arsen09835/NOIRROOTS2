@@ -73,10 +73,10 @@ const IngredientsPage = () => {
             <span className="bg-white px-4 py-2 rounded-full border border-black/10">No Silicones</span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
             {ingredients.map((ingredient, index) => (
               <div key={index} className="bg-white rounded-lg shadow-sm border border-black/10 overflow-hidden hover:shadow-md transition-shadow duration-300">
-                <div className="media aspect-4/5">
+                <div className="media aspect-square sm:aspect-4/5">
                   <img 
                     src={ingredient.image} 
                     alt={`${ingredient.name} - Natural hair care ingredient`}
@@ -85,8 +85,8 @@ const IngredientsPage = () => {
                     loading="lazy"
                   />
                 </div>
-                <div className="p-6">
-                  <h3 className="font-playfair font-bold text-black mb-3 text-xl">
+                <div className="p-4 sm:p-6">
+                  <h3 className="font-playfair font-bold text-black mb-2 sm:mb-3 text-lg sm:text-xl">
                     {ingredient.name}
                   </h3>
                   <div className="space-y-3">

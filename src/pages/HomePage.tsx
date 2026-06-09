@@ -129,7 +129,7 @@ const HomePage = () => {
               </div>
             </div>
 
-            <div className="flex justify-center">
+            <div className="flex justify-center order-first lg:order-last">
               <div className="media aspect-4/5 w-80 rounded-2xl shadow-2xl overflow-hidden">
                 <img 
                   src="/2025-09-25 22.10.49.jpg" 
