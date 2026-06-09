@@ -35,6 +35,16 @@ const HomePage = () => {
     { text: "UK-based", icon: <MapPin size={16} /> }
   ];
 
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const target = document.getElementById(id);
+    if (!target) return;
+    const header = document.querySelector('header');
+    const headerOffset = header ? (header as HTMLElement).offsetHeight : 0;
+    const top = target.getBoundingClientRect().top + window.scrollY - headerOffset - 20;
+    window.scrollTo({ top, behavior: 'smooth' });
+  };
+
   return (
     <>
       <Helmet>
@@ -100,7 +110,7 @@ const HomePage = () => {
               </div>
 
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-3 sm:space-y-0 sm:space-x-4 mb-8">
-                <a href="#buy" className="btn-primary">
+                <a href="#buy" onClick={(e) => scrollToSection(e, 'buy')} className="btn-primary">
                   Shop Now
                 </a>
                 <Link to="/ingredients#top" className="btn-secondary">
@@ -244,7 +254,7 @@ const HomePage = () => {
       </section>
 
       {/* My Story Section */}
-      <section id="my-story" className="story-hero py-16 bg-cream" data-section="story">
+      <section id="my-story" className="py-16 bg-cream" data-section="story">
         <div className="max-w-4xl mx-auto px-5 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-playfair font-bold text-black mb-4">
@@ -256,45 +266,48 @@ const HomePage = () => {
           </div>
 
           <div className="bg-white rounded-lg p-8 shadow-sm">
-            <div className="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8 mb-8">
-              <div className="story-hero-img media aspect-square w-32 rounded-full overflow-hidden flex-shrink-0">
-                <img
-                  src="/Untitled design (38).png"
-                  alt="Joseph Castillo, Founder of Noir Roots"
-                  width="128"
-                  height="128"
-                  loading="lazy"
-                />
+            {/* Top row: founder image + byline (left), opening paragraph (right) */}
+            <div className="flex flex-col md:flex-row md:items-start gap-8 mb-6">
+              <div className="w-40 md:w-48 flex-shrink-0 mx-auto md:mx-0">
+                <div className="media aspect-square rounded-2xl overflow-hidden">
+                  <img
+                    src="/Untitled design (38).png"
+                    alt="Joseph Castillo, Founder of Noir Roots"
+                    width="192"
+                    height="192"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="mt-4 text-center md:text-left">
+                  <p className="font-playfair text-black font-semibold">
+                    Joseph Castillo
+                  </p>
+                  <p className="font-source text-gold text-sm">
+                    Founder & Creator
+                  </p>
+                </div>
               </div>
-            </div>
 
-            <div className="relative">
-              <div className="space-y-4 font-source text-black/80 leading-relaxed">
+              <div className="flex-1 font-source text-black/80 leading-relaxed">
                 <p>
                   For years, I searched for the "perfect" hair oil. Instead of healthy hair, I got brittle strands,
                   scalp irritation, and chunks of hair falling out. Mass-produced formulas filled with harsh synthetics
                   weren't nourishing my hair—they were suffocating it.
                 </p>
-
-                <p className="font-semibold text-gold">
-                  If I couldn't find a product I trusted, I would create one.
-                </p>
-
-                <p>
-                  Armed with determination, I turned to nature's wisdom. Months of research, blending, and testing
-                  in my kitchen led to this powerful, synergistic blend of premium natural oils. This wasn't just
-                  a product—it was my salvation.
-                </p>
               </div>
+            </div>
 
-              <div className="mt-8 text-left">
-                <p className="font-playfair text-black font-semibold">
-                  Joseph Castillo
-                </p>
-                <p className="font-source text-gold text-sm">
-                  Founder & Creator
-                </p>
-              </div>
+            {/* Continuing story */}
+            <div className="space-y-4 font-source text-black/80 leading-relaxed">
+              <p className="font-semibold text-gold">
+                If I couldn't find a product I trusted, I would create one.
+              </p>
+
+              <p>
+                Armed with determination, I turned to nature's wisdom. Months of research, blending, and testing
+                in my kitchen led to this powerful, synergistic blend of premium natural oils. This wasn't just
+                a product—it was my salvation.
+              </p>
             </div>
 
             <div className="text-center mt-8">
