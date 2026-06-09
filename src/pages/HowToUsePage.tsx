@@ -85,7 +85,7 @@ const HowToUsePage = () => {
           {/* Application Methods */}
           <div className="grid lg:grid-cols-3 gap-8 mb-16">
             {methods.map((method, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-md border border-black/10 p-6">
+              <div key={index} className="bg-white rounded-lg shadow-sm border border-black/10 p-6">
                 <div className="text-center mb-6">
                   <div className="w-16 h-16 bg-gold/20 rounded-full flex items-center justify-center mx-auto mb-4">
                     {method.icon}
@@ -124,7 +124,7 @@ const HowToUsePage = () => {
           </div>
 
           {/* Pro Tips */}
-          <div className="bg-white rounded-lg shadow-md p-8 mb-12">
+          <div className="bg-white rounded-lg shadow-sm p-8 mb-12">
             <h2 className="text-2xl font-playfair font-bold text-black mb-6 text-center">
               Pro Tips for Best Results
             </h2>

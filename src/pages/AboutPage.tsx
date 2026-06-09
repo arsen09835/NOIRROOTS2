@@ -34,7 +34,7 @@ const AboutPage = () => {
           </section>
 
           {/* Founder Story */}
-          <div className="bg-white rounded-lg p-8 mb-12 shadow-md">
+          <div className="bg-white rounded-lg p-8 mb-12 shadow-sm">
             <div className="mb-6">
               <p className="font-playfair text-black font-semibold">
                 Joseph Castillo

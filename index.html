@@ -13,13 +13,13 @@
       html, body {
         margin: 0;
         padding: 0;
-        background-color: #FFFFFF;
+        background-color: #FAF9F7;
         color: #222;
         font-family: 'Source Sans 3', sans-serif;
       }
       #root {
         min-height: 100vh;
-        background-color: #FFFFFF;
+        background-color: #FAF9F7;
       }
       /* Hide content until CSS is loaded */
       .loading {
@@ -95,14 +95,6 @@
     if (!el) return;
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     if (el.getAttribute('target') === '_blank') return;
-
-    // Don't force scroll-to-top for in-page section anchors (same-page navigation)
-    var rawHref = el.getAttribute('href') || el.getAttribute('data-href') || '';
-    if (rawHref.charAt(0) === '#') return;
-    try {
-      var u = new URL(rawHref, location.origin);
-      if (isSamePath(u) && u.hash && ALLOW_HASH.has(u.hash.toLowerCase())) return;
-    } catch (err) {}
 
     patchLinks(document);
     setTimeout(function(){ window.scrollTo(0,0); }, 60);

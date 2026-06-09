@@ -72,7 +72,7 @@ const FAQPage = () => {
 
           <div className="space-y-4">
             {faqs.map((faq, index) => (
-              <div key={index} className="bg-white border border-black/10 rounded-lg shadow-md">
+              <div key={index} className="bg-white border border-black/10 rounded-lg shadow-sm">
                 <button
                   onClick={() => toggleFAQ(index)}
                   className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-black/5 transition-colors rounded-lg"

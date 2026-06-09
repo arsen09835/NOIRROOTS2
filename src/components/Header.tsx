@@ -1,23 +1,50 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ShoppingBag } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   const navigation = [
     { name: 'Home', href: '/#top' },
-    { name: 'Shop', href: '/shop#top' },
-    { name: 'Ingredients', href: '/ingredients#top' },
-    { name: 'How to Use', href: '/how-to-use#top' },
+    { name: 'Shop', href: '/#buy' },
     { name: 'About', href: '/about#top' },
     { name: 'Contact', href: '/contact#top' },
   ];
 
-  const isActive = (href: string) => {
-    const path = href.split('#')[0] || '/';
-    return location.pathname === path;
+  const homeNavigation = [
+    { name: 'Ingredients', href: '#ingredients' },
+    { name: 'How to Use', href: '#how-to-use' },
+    { name: 'My Story', href: '#my-story' },
+    { name: 'Shop', href: '#buy' },
+    { name: 'Contact', href: '/contact#top' },
+  ];
+
+  const currentNavigation = isHomePage ? homeNavigation : navigation;
+
+  const isActive = (path: string) => location.pathname === path;
+
+  const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) {
+        const header = document.querySelector('header');
+        const headerOffset = header ? header.offsetHeight : 0;
+        const elementPosition = target.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = elementPosition - headerOffset - 20;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    } else if (href.startsWith('/#')) {
+      e.preventDefault();
+      window.location.href = href;
+    }
   };
 
   return (
@@ -30,9 +57,9 @@ const Header = () => {
             className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
             aria-label="Go to Home"
           >
-            <img
-              src="/Untitled design (47).png"
-              alt="Noir Roots - Premium Hair Oil"
+            <img 
+              src="/Untitled design (47).png" 
+              alt="Noir Roots - Premium Hair Oil" 
               className="h-12 w-auto"
               width="120"
               height="48"
@@ -41,16 +68,29 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                className={`font-source font-medium transition-colors ${
-                  isActive(item.href) ? 'text-gold' : 'text-black hover:text-gold'
-                }`}
-              >
-                {item.name}
-              </Link>
+            {currentNavigation.map((item) => (
+              item.href.startsWith('#') ? (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  onClick={(e) => handleAnchorClick(e, item.href)}
+                  className="font-source font-medium text-black hover:text-gold transition-colors"
+                >
+                  {item.name}
+                </a>
+              ) : (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className={`font-source font-medium transition-colors ${
+                    isActive(item.href)
+                      ? 'text-gold'
+                      : 'text-black hover:text-gold'
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              )
             ))}
           </nav>
 
@@ -60,7 +100,7 @@ const Header = () => {
               <ShoppingBag size={20} />
               <span className="sr-only">Shopping cart</span>
             </button>
-
+            
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="md:hidden p-2 text-black hover:text-gold transition-colors"
@@ -75,17 +115,33 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden border-t border-black/10 py-4">
             <nav className="flex flex-col space-y-4">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  onClick={() => setIsMenuOpen(false)}
-                  className={`font-source font-medium transition-colors ${
-                    isActive(item.href) ? 'text-gold' : 'text-black hover:text-gold'
-                  }`}
-                >
-                  {item.name}
-                </Link>
+              {currentNavigation.map((item) => (
+                item.href.startsWith('#') ? (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    onClick={(e) => {
+                      handleAnchorClick(e, item.href);
+                      setIsMenuOpen(false);
+                    }}
+                    className="font-source font-medium text-black hover:text-gold transition-colors"
+                  >
+                    {item.name}
+                  </a>
+                ) : (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className={`font-source font-medium transition-colors ${
+                      isActive(item.href)
+                        ? 'text-gold'
+                        : 'text-black hover:text-gold'
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                )
               ))}
             </nav>
           </div>

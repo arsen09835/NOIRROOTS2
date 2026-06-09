@@ -1,3 +1,4 @@
+import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { Shield, Leaf, Heart, MapPin, ChevronRight, Clock, Moon, Sparkles } from 'lucide-react';
@@ -72,58 +73,43 @@ const HomePage = () => {
         Pre-orders open, dispatching October 22
       </div>
 
-      {/* Hero / First Product Section */}
-      <section id="home" className="py-10 lg:py-16 bg-white">
+      {/* Hero Section */}
+      <section id="home" className="py-16 bg-gradient-to-br from-cream to-white">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            {/* Product image */}
-            <div className="flex justify-center order-first lg:order-last">
-              <div className="media aspect-4/5 w-56 sm:w-64 lg:w-80 rounded-2xl border border-black/5 shadow-xl overflow-hidden bg-white">
-                <img
-                  src="/2025-09-25 22.10.49.jpg"
-                  alt="Noir Roots Hair Oil - Premium 100ml bottle with natural ingredients"
-                  width="320"
-                  height="400"
-                  loading="eager"
-                />
-              </div>
-            </div>
-
-            {/* Product info */}
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="text-center lg:text-left">
-              <p className="font-source text-xs sm:text-sm font-semibold tracking-widest uppercase text-gold mb-2">
-                Noir Roots Hair Oil · 100ml
-              </p>
-
-              <h1 className="text-3xl sm:text-4xl lg:text-6xl font-playfair font-bold text-black leading-tight mb-3 lg:mb-5">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-playfair font-bold text-black leading-tight mb-6">
                 Nature. Nourish. Shine.
               </h1>
-
-              <p className="font-source text-black/70 mb-5 leading-relaxed text-base sm:text-lg lg:text-xl">
-                A clean, nutrient-rich oil for hydrated, resilient hair and a soothed scalp.
+              
+              <p className="text-lg sm:text-xl font-source text-black/70 mb-8 leading-relaxed">
+                A clean, nutrient-rich oil for hydrated, resilient hair and a soothed scalp. 
                 Crafted with premium plant-powered ingredients for visible results.
               </p>
 
-              {/* Price + availability */}
-              <div className="flex items-center justify-center lg:justify-start gap-3 mb-5">
-                <span className="text-3xl font-playfair font-bold text-black">£30</span>
-                <span className="bg-gold/10 text-gold text-xs font-source font-semibold px-3 py-1 rounded-full">
-                  Pre-order · ships Oct 22
-                </span>
+              <div className="grid grid-cols-2 gap-4 mb-8 text-sm font-source">
+                {benefits.map((benefit, index) => (
+                  <div key={index} className="flex items-start space-x-2">
+                    <div className="flex-shrink-0 mt-1">{benefit.icon}</div>
+                    <div>
+                      <h3 className="font-semibold text-black">{benefit.title}</h3>
+                      <p className="text-black/60 text-xs">{benefit.description}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
 
-              {/* CTAs */}
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 mb-6">
-                <Link to="/product/noir-roots-hair-oil-100ml#top" className="btn-primary w-full sm:w-auto text-center">
-                  Pre-order Now
-                </Link>
-                <Link to="/ingredients#top" className="btn-secondary w-full sm:w-auto text-center">
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-3 sm:space-y-0 sm:space-x-4 mb-8">
+                <a href="#buy" className="btn-primary">
+                  Shop Now
+                </a>
+                <Link to="/ingredients#top" className="btn-secondary">
                   See Ingredients
                 </Link>
               </div>
 
-              {/* Trust strip */}
-              <div className="flex flex-wrap justify-center lg:justify-start gap-x-4 gap-y-2 text-xs font-source text-black/60">
+              {/* Trust Strip */}
+              <div className="flex flex-wrap justify-center lg:justify-start gap-4 text-xs font-source text-black/60">
                 {trustBadges.map((badge, index) => (
                   <div key={index} className="flex items-center space-x-1">
                     {badge.icon}
@@ -132,19 +118,18 @@ const HomePage = () => {
                 ))}
               </div>
             </div>
-          </div>
 
-          {/* Benefits — secondary detail, below the fold */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-10 lg:mt-16 text-sm font-source">
-            {benefits.map((benefit, index) => (
-              <div key={index} className="bg-white rounded-lg border border-black/5 shadow-md p-4 flex items-start space-x-2">
-                <div className="flex-shrink-0 mt-1">{benefit.icon}</div>
-                <div>
-                  <h3 className="font-semibold text-black">{benefit.title}</h3>
-                  <p className="text-black/60 text-xs">{benefit.description}</p>
-                </div>
+            <div className="flex justify-center">
+              <div className="media aspect-4/5 w-80 rounded-2xl shadow-2xl overflow-hidden">
+                <img 
+                  src="/2025-09-25 22.10.49.jpg" 
+                  alt="Noir Roots Hair Oil - Premium 100ml bottle with natural ingredients"
+                  width="320"
+                  height="400"
+                  loading="eager"
+                />
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
@@ -185,7 +170,7 @@ const HomePage = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="group bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300">
+            <div className="group bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-playfair font-semibold text-black">Pre-wash Treatment</h3>
                 <Clock className="text-gold" size={20} />
@@ -195,7 +180,7 @@ const HomePage = () => {
               </p>
             </div>
 
-            <div className="group bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300">
+            <div className="group bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-playfair font-semibold text-black">Overnight Intensive</h3>
                 <Moon className="text-gold" size={20} />
@@ -205,7 +190,7 @@ const HomePage = () => {
               </p>
             </div>
 
-            <div className="group bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300">
+            <div className="group bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-playfair font-semibold text-black">Finishing Touch</h3>
                 <Sparkles className="text-gold" size={20} />
@@ -259,7 +244,7 @@ const HomePage = () => {
       </section>
 
       {/* My Story Section */}
-      <section id="my-story" className="py-16 bg-cream" data-section="story">
+      <section id="my-story" className="story-hero py-16 bg-cream" data-section="story">
         <div className="max-w-4xl mx-auto px-5 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-playfair font-bold text-black mb-4">
@@ -270,30 +255,21 @@ const HomePage = () => {
             </p>
           </div>
 
-          <div className="bg-white rounded-lg p-8 shadow-md">
-            {/* Founder image + byline (left), full story (right) */}
-            <div className="flex flex-col md:flex-row md:items-start gap-8">
-              <div className="w-40 md:w-48 flex-shrink-0 mx-auto md:mx-0">
-                <div className="media aspect-square rounded-2xl overflow-hidden">
-                  <img
-                    src="/Untitled design (38).png"
-                    alt="Joseph Castillo, Founder of Noir Roots"
-                    width="192"
-                    height="192"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="mt-4 text-center md:text-left">
-                  <p className="font-playfair text-black font-semibold">
-                    Joseph Castillo
-                  </p>
-                  <p className="font-source text-gold text-sm">
-                    Founder & Creator
-                  </p>
-                </div>
+          <div className="bg-white rounded-lg p-8 shadow-sm">
+            <div className="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8 mb-8">
+              <div className="story-hero-img media aspect-square w-32 rounded-full overflow-hidden flex-shrink-0">
+                <img
+                  src="/Untitled design (38).png"
+                  alt="Joseph Castillo, Founder of Noir Roots"
+                  width="128"
+                  height="128"
+                  loading="lazy"
+                />
               </div>
+            </div>
 
-              <div className="flex-1 space-y-4 font-source text-black/80 leading-relaxed">
+            <div className="relative">
+              <div className="space-y-4 font-source text-black/80 leading-relaxed">
                 <p>
                   For years, I searched for the "perfect" hair oil. Instead of healthy hair, I got brittle strands,
                   scalp irritation, and chunks of hair falling out. Mass-produced formulas filled with harsh synthetics
@@ -308,6 +284,15 @@ const HomePage = () => {
                   Armed with determination, I turned to nature's wisdom. Months of research, blending, and testing
                   in my kitchen led to this powerful, synergistic blend of premium natural oils. This wasn't just
                   a product—it was my salvation.
+                </p>
+              </div>
+
+              <div className="mt-8 text-left">
+                <p className="font-playfair text-black font-semibold">
+                  Joseph Castillo
+                </p>
+                <p className="font-source text-gold text-sm">
+                  Founder & Creator
                 </p>
               </div>
             </div>
