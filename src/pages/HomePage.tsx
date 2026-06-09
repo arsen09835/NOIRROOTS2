@@ -266,8 +266,8 @@ const HomePage = () => {
           </div>
 
           <div className="bg-white rounded-lg p-8 shadow-sm">
-            {/* Top row: founder image + byline (left), opening paragraph (right) */}
-            <div className="flex flex-col md:flex-row md:items-start gap-8 mb-6">
+            {/* Founder image + byline (left), full story (right) */}
+            <div className="flex flex-col md:flex-row md:items-start gap-8">
               <div className="w-40 md:w-48 flex-shrink-0 mx-auto md:mx-0">
                 <div className="media aspect-square rounded-2xl overflow-hidden">
                   <img
@@ -288,26 +288,23 @@ const HomePage = () => {
                 </div>
               </div>
 
-              <div className="flex-1 font-source text-black/80 leading-relaxed">
+              <div className="flex-1 space-y-4 font-source text-black/80 leading-relaxed">
                 <p>
                   For years, I searched for the "perfect" hair oil. Instead of healthy hair, I got brittle strands,
                   scalp irritation, and chunks of hair falling out. Mass-produced formulas filled with harsh synthetics
                   weren't nourishing my hair—they were suffocating it.
                 </p>
+
+                <p className="font-semibold text-gold">
+                  If I couldn't find a product I trusted, I would create one.
+                </p>
+
+                <p>
+                  Armed with determination, I turned to nature's wisdom. Months of research, blending, and testing
+                  in my kitchen led to this powerful, synergistic blend of premium natural oils. This wasn't just
+                  a product—it was my salvation.
+                </p>
               </div>
-            </div>
-
-            {/* Continuing story */}
-            <div className="space-y-4 font-source text-black/80 leading-relaxed">
-              <p className="font-semibold text-gold">
-                If I couldn't find a product I trusted, I would create one.
-              </p>
-
-              <p>
-                Armed with determination, I turned to nature's wisdom. Months of research, blending, and testing
-                in my kitchen led to this powerful, synergistic blend of premium natural oils. This wasn't just
-                a product—it was my salvation.
-              </p>
             </div>
 
             <div className="text-center mt-8">
