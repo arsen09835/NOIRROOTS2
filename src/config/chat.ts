@@ -1,1 +1,1 @@
-export const CHAT_ENABLED = false;
+export const CHAT_ENABLED = true;

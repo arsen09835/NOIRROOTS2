@@ -18,12 +18,12 @@ export default function VoiceglowChat() {
       region: "na",
       render: "bottom-right",
       stylesheets: [
-        "https://vg-bunny-cdn.b-cdn.net/vg_live_build/styles.css"
+        "https://cdn.convocore.ai/vg_live_build/styles.css"
       ],
     };
 
     const script = document.createElement("script");
-    script.src = "https://vg-bunny-cdn.b-cdn.net/vg_live_build/vg_bundle.js";
+    script.src = "https://cdn.convocore.ai/vg_live_build/vg_bundle.js";
     script.defer = true;
     script.onload = () => { window.VG_SCRIPT_LOADED = true; };
     document.body.appendChild(script);
