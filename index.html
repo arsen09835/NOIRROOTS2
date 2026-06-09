@@ -109,24 +109,6 @@
     </script>
     <script>
 (function () {
-  const SEL = [
-    '[id*="tidio"]','[class*="tidio"]',
-    '[id*="crisp"]','[class*="crisp"]',
-    '[id*="intercom"]','[class*="intercom"]',
-    '[id*="voiceglow"]','[class*="voiceglow"]',
-    '[id*="VG_"]','[class*="vg-"]',
-    '[src*="tawk.to"]','[src*="zndsk"]','[src*="gorgias"]',
-    'iframe[src*="chat"]'
-  ];
-  const kill = () => {
-    document.querySelectorAll(SEL.join(',')).forEach(n => n.remove());
-  };
-  kill();
-  setTimeout(kill, 1500);
-})();
-    </script>
-    <script>
-(function () {
   const blocks = document.querySelectorAll('.story-hero, #my-story, [data-section="story"]');
   blocks.forEach((wrap) => {
     const imgWrap =
